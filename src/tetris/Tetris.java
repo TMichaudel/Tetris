@@ -5,6 +5,9 @@
  */
 
 package tetris;
+import blokus.*;
+import Modele.*;
+import javax.swing.*;
 
 /**
  *
@@ -12,11 +15,24 @@ package tetris;
  */
 public class Tetris {
 
-    /**
-     * @param args the command line arguments
-     */
+    public Tetris() {
+        (new Thread(this)).start();
+    }
+    
+    public run() {
+        while(true)
+        {
+            maj();
+            setChanged();
+            notifyObserver();
+            Thread.currentThread().sleep(1000);
+        }
+    }
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        Tetris t = new Tetris();
+        Vue v = new Vue();
+        v.addObserver(t);
     }
     
 }
