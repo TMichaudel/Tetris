@@ -18,16 +18,7 @@ public class Tetris {
     public Tetris() {
         (new Thread(this)).start();
     }
-    
-    public run() {
-        while(true)
-        {
-            maj();
-            setChanged();
-            notifyObserver();
-            Thread.currentThread().sleep(1000);
-        }
-    }
+  
     
     public static void main(String[] args) {
         Tetris t = new Tetris();
