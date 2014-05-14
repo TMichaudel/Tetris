@@ -14,7 +14,8 @@ import Vue.Case;
  */
 public class Piece {
     Case Cases[][] = new Case[4][4];
-    Position position;
+    int x;
+    int y;
     
     public Piece(){
 //        int i,j;
@@ -38,5 +39,10 @@ public class Piece {
         p1.Cases[0][2]=new Case(0,2,1);
         p1.Cases[0][3]=new Case(0,3,1);
         return p1;
+    }
+    
+    public void deplacer(int x1,int y1) {
+        x+=x1;
+        y+=y1;
     }
 }

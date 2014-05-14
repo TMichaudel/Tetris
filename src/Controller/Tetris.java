@@ -3,13 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetris;
 
-public class Thread extends java.lang.Thread{
+package Controller;
 
-    @Override
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author michaudel
+ */
+public class Tetris  {
+    private Thread t;
+    
+    
+    
     public void run() {
-        while (true) {
+            while (true) {
             maj();
             setChanged();
             notifyObserver();
@@ -17,3 +27,5 @@ public class Thread extends java.lang.Thread{
         }
     }
 }
+
+
