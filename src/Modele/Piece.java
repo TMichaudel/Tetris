@@ -6,6 +6,8 @@
 
 package Modele;
 
+import Vue.Case;
+
 /**
  *
  * @author michaudel

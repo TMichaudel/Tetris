@@ -6,25 +6,44 @@
 
 package Modele;
 
+import java.awt.Color;
+
 /**
  *
  * @author mathieu
  */
 public class Grille {
     
-    Case grille[][];
+    public Color tab[][];
+    public int statPieces[];
+    public int x;
+    public int y;
+    public Piece pieceEnCoursDeDescente;
+    public int pos;
     
-    public Grille(){
-        grille = null;
-    }
+    public Score score;
+    public boolean termine;
     
-    public Case[][] getGrille(){
-        return grille;
-    }
+    public Piece tabPieceSuivante[];
     
-    /*
-    public Case[][] ajouterPiece(Piece p){
-        
+    public Grille(int x , int y){
+        this.x = x;
+        this.y = y;
+        tab = new Color[x][y];
+        this.reinitialiserTableau();
+        this.pos = 0;
+        this.termine = false;
+        this.statPieces = new int[] {0, 0, 0, 0, 0, 0, 0};
+        randomTableauPiece();
+    } 
+    
+    public void reinitialiserTableau()
+    {
+        score.score = 0;
+        for(int i = 0; i < x; i ++){
+            for(int j = 0; j < y; j++) {
+                tab[i][j] = Color.DARK_GRAY;
+            }
+        }
     }
-    */
 }
