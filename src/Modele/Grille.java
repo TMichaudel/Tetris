@@ -18,8 +18,7 @@ public class Grille {
     public int largeur;
     public int hauteur;
     public Piece pieceCourante;
-    
-    public Piece tabPieceSuivante[];
+    public Piece pieceSuivante;
     
     public Grille(int x , int y){
         this.largeur = x;
@@ -39,7 +38,15 @@ public class Grille {
     
     public void descendrePiece() {
         //if(!collision) {
-        pieceCourante.deplacer(0,-1);
+        pieceCourante.deplacer(0,1);
+        //}
+    }
+    
+    public boolean collisionDepl() {
+        boolean bool = true;
+        if(pieceCourante.getCase(0))
+        
+        return bool;
     }
             
             

@@ -8,23 +8,29 @@ package Controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import Modele.Grille;
 /**
  *
  * @author michaudel
  */
-public class Tetris  {
+public class ControllerTetris  implements Runnable {
     private Thread t;
     
     
     
     public void run() {
             while (true) {
-            maj();
-            setChanged();
-            notifyObserver();
-            Thread.currentThread().sleep(1000);
+            //maj();
+            //setChanged();
+            //notifyObserver();
+            //Thread.currentThread().sleep(1000);
         }
+    }
+    
+        public void start()
+    {
+        t = new Thread(this, "thread");
+        t.start();
     }
 }
 

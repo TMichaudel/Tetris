@@ -7,6 +7,7 @@
 package tetris;
 import blokus.*;
 import Modele.*;
+import Controller.*;
 import javax.swing.*;
 
 /**
@@ -16,14 +17,14 @@ import javax.swing.*;
 public class Tetris {
 
     public Tetris() {
-        (new Thread(this)).start();
+    //    new ControllerTetris.start();
     }
   
     
     public static void main(String[] args) {
         Tetris t = new Tetris();
         Vue v = new Vue();
-        v.addObserver(t);
+        //v.addObserver(t);
     }
     
 }
