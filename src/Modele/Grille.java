@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Modele;
 
 import java.awt.Color;
@@ -13,41 +12,76 @@ import java.awt.Color;
  * @author mathieu
  */
 public class Grille {
-    
+
     public int tab[][];
     public int largeur;
     public int hauteur;
     public Piece pieceCourante;
     public Piece pieceSuivante;
-    
-    public Grille(int x , int y){
+
+    public Grille(int x, int y) {
         this.largeur = x;
         this.hauteur = y;
         tab = new int[x][y];
         this.reinitialiserTableau();
-    } 
-    
-    public void reinitialiserTableau()
+        pieceCourante = new Piece();
+        pieceCourante.randomPiece();
+        //pieceSuivante.randomPiece();
+    }
+
+    public int getLargeur()
     {
-        for(int i = 0; i < largeur; i ++){
-            for(int j = 0; j < hauteur; j++) {
+        return largeur;
+    }
+    
+    public int getHauteur()
+    {
+        return hauteur;
+    }
+    
+    public final void reinitialiserTableau() {
+        for (int i = 0; i < largeur; i++) {
+            for (int j = 0; j < hauteur; j++) {
                 tab[i][j] = 0;
             }
         }
     }
-    
+
     public void descendrePiece() {
         //if(!collision) {
-        pieceCourante.deplacer(0,1);
+        pieceCourante.deplacer(0, 1);
         //}
     }
-    
-    public boolean collisionDepl() {
-        boolean bool = true;
-        if(pieceCourante.getCase(0))
-        
-        return bool;
+
+    public void tomberPiece() {
+        while (!collisionDepl(0, 1)) {
+            descendrePiece();
+        }
     }
-            
-            
+
+    public void droitePiece() {
+        pieceCourante.deplacer(1, 0);
+    }
+
+    public void gauchePiece() {
+        pieceCourante.deplacer(-1, 0);
+    }
+
+    //collisionDepl(0,1) vérifie si la pièce peut descendre par exemple
+    public boolean collisionDepl(int x, int y) {
+        if (tab[pieceCourante.getCase(0).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(0).getY() + pieceCourante.getPosY() + y] != 0) {
+            return false;
+        }
+        if (tab[pieceCourante.getCase(1).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(1).getY() + pieceCourante.getPosY() + y] != 0) {
+            return false;
+        }
+        if (tab[pieceCourante.getCase(2).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(2).getY() + pieceCourante.getPosY() + y] != 0) {
+            return false;
+        }
+        if (tab[pieceCourante.getCase(3).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(3).getY() + pieceCourante.getPosY() + y] != 0) {
+            return false;
+        }
+        return true;
+    }
+
 }

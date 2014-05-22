@@ -28,6 +28,14 @@ public class Piece {
         return this.Cases[x];
     }
     
+    public int getPosY() {
+        return this.y;
+    }
+    
+    public int getPosX() {
+        return this.x;
+    }
+    
     public Piece barre() {
         Piece p1 = new Piece();
         p1.Cases[0]=new Case(0,0,1);

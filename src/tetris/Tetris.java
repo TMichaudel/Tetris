@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tetris;
-import blokus.*;
+
 import Modele.*;
 import Controller.*;
 import javax.swing.*;
+import Vue.*;
 
 /**
  *
@@ -17,14 +17,15 @@ import javax.swing.*;
 public class Tetris {
 
     public Tetris() {
-    //    new ControllerTetris.start();
+        //    new ControllerTetris.start();
     }
-  
-    
+
     public static void main(String[] args) {
-        Tetris t = new Tetris();
-        Vue v = new Vue();
-        //v.addObserver(t);
+
+        Grille grille = new Grille(10, 20);
+        VueTetris v = new VueTetris(grille);
+        v.setVisible(true);
+        ControllerTetris controller = new ControllerTetris(grille);
+        controller.start();
     }
-    
 }
