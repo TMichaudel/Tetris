@@ -64,10 +64,10 @@ public class VueTetris extends JFrame {
         jm.add(m);
 
         setJMenuBar(jm);
-
+        GrilleVue grilleV = new GrilleVue(grille);
         setTitle("Tetris");
         setSize(350, 700);
-        JComponent pan = new JPanel(new GridLayout(grille.getHauteur(), grille.getLargeur()));
+        JComponent pan = new JPanel(new GridLayout(grilleV.hauteur, grilleV.largeur));
         Border blackline = BorderFactory.createLineBorder(Color.black, 1);
 
 //        for (int i = 0; i < 200; i++) {
@@ -76,9 +76,9 @@ public class VueTetris extends JFrame {
 //            pan.add(ptest);
 //        }
 
-        for (int i = 0; i < grille.getHauteur(); i++) {
-            for (int j = 0; j < grille.getLargeur(); j++) {
-                JComponent ptest = new Case(grille.tab[j][i]);
+        for (int i = 0; i < grilleV.hauteur; i++) {
+            for (int j = 0; j < grilleV.largeur; j++) {
+                JComponent ptest = new Case(grilleV.tab[j][i]);
                 ptest.setBorder(blackline);
                 pan.add(ptest);
             }

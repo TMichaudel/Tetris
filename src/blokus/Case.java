@@ -21,23 +21,6 @@ public class Case extends JPanel {
         
         setBackground(Color.white);
         
-        addMouseListener(new MouseAdapter() {
-        
-            @Override
-            public void mouseEntered(MouseEvent arg0) {
-                super.mouseClicked(arg0);
-                setBackground(Color.BLACK);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent arg0) {
-                super.mouseExited(arg0);
-                setBackground(Color.red);
-            }
-            
-            
-            
-        });
         
     }
     
