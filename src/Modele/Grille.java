@@ -5,11 +5,13 @@
  */
 package Modele;
 
+import java.util.Observable;
+
 /**
  *
  * @author mathieu
  */
-public class Grille {
+public class Grille extends Observable {
 
     public int tab[][];
     public int largeur;
@@ -44,9 +46,10 @@ public class Grille {
     }
 
     public void descendrePiece() {
-        if (!collisionDepl(0, 1)) {
+        System.out.println(pieceCourante.y);
+       // if (!collisionDepl(0, 1)) {
             pieceCourante.deplacer(0, 1);
-        }
+        //}
     }
 
     public void tomberPiece() {

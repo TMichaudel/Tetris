@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.BorderFactory;
 
 import javax.swing.JComponent;
@@ -23,7 +25,7 @@ import javax.swing.border.Border;
  *
  * @author frederic
  */
-public class VueTetris extends javax.swing.JFrame {
+public class VueTetris extends javax.swing.JFrame implements Observer {
 
     Grille grille;
     ControllerTetris controller;
@@ -32,7 +34,7 @@ public class VueTetris extends javax.swing.JFrame {
     public VueTetris(Grille grille) {
         super();
         this.grille = grille;
-
+        grille.addObserver(this);
         build();
         addWindowListener(new WindowAdapter() {
             @Override
@@ -115,6 +117,12 @@ public class VueTetris extends javax.swing.JFrame {
     public void setKeyListener(ControllerTetris controller) {
         this.controller = controller;
         this.addKeyListener(this.controller);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        repaint();
+        System.out.println("fhfgr");
     }
 
 }
