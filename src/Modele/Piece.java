@@ -19,6 +19,7 @@ public class Piece {
     public Piece() {
         x = 4;
         y = 0;
+        rota = 0;
     }
 
     public Piece get() {
@@ -85,10 +86,10 @@ public class Piece {
             Cases[2] = new Case(2, 1, 3);
             Cases[3] = new Case(1, 0, 3);
         } else if (rota == 3) {
-            Cases[0] = new Case(0, 1, 3);
+            Cases[0] = new Case(1, 0, 3);
             Cases[1] = new Case(1, 1, 3);
-            Cases[2] = new Case(2, 1, 3);
-            Cases[3] = new Case(1, 0, 3);
+            Cases[2] = new Case(1, 2, 3);
+            Cases[3] = new Case(0, 1, 3);
         }
     }
 
@@ -143,9 +144,9 @@ public class Piece {
     public void Z() {
         if (rota == 0) {
             Cases[0] = new Case(0, 0, 6);
-            Cases[1] = new Case(0, 1, 6);
+            Cases[1] = new Case(1, 0, 6);
             Cases[2] = new Case(1, 1, 6);
-            Cases[3] = new Case(1, 2, 6);
+            Cases[3] = new Case(2, 1, 6);
         } else if (rota == 1) {
             Cases[0] = new Case(0, 2, 6);
             Cases[1] = new Case(0, 1, 6);
@@ -153,9 +154,9 @@ public class Piece {
             Cases[3] = new Case(1, 0, 6);
         } else if (rota == 2) {
             Cases[0] = new Case(0, 0, 6);
-            Cases[1] = new Case(0, 1, 6);
+            Cases[1] = new Case(1, 0, 6);
             Cases[2] = new Case(1, 1, 6);
-            Cases[3] = new Case(1, 2, 6);
+            Cases[3] = new Case(2, 1, 6);
         } else if (rota == 3) {
             Cases[0] = new Case(0, 2, 6);
             Cases[1] = new Case(0, 1, 6);
@@ -166,20 +167,20 @@ public class Piece {
 
     public void invZ() {
         if (rota == 0) {
-            Cases[0] = new Case(0, 1, 7);
-            Cases[1] = new Case(0, 2, 7);
-            Cases[2] = new Case(1, 0, 7);
-            Cases[3] = new Case(1, 1, 7);
+            Cases[0] = new Case(1, 0, 7);
+            Cases[1] = new Case(2, 0, 7);
+            Cases[2] = new Case(1, 1, 7);
+            Cases[3] = new Case(0, 1, 7);
         } else if (rota == 1) {
             Cases[0] = new Case(0, 0, 7);
             Cases[1] = new Case(0, 1, 7);
             Cases[2] = new Case(1, 2, 7);
             Cases[3] = new Case(1, 1, 7);
         } else if (rota == 2) {
-            Cases[0] = new Case(0, 1, 7);
-            Cases[1] = new Case(0, 2, 7);
-            Cases[2] = new Case(1, 0, 7);
-            Cases[3] = new Case(1, 1, 7);
+            Cases[0] = new Case(1, 0, 7);
+            Cases[1] = new Case(2, 0, 7);
+            Cases[2] = new Case(1, 1, 7);
+            Cases[3] = new Case(0, 1, 7);
         } else if (rota == 3) {
             Cases[0] = new Case(0, 0, 7);
             Cases[1] = new Case(0, 1, 7);
@@ -229,6 +230,6 @@ public class Piece {
     }
 
     public void rotation() {
-        rota = rota + 1 % 4;
+        rota = (rota + 1) % 4;
     }
 }
