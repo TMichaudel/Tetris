@@ -121,4 +121,9 @@ public class Grille extends Observable {
             tab[pieceCourante.getCase(i).getX()+pieceCourante.getPosX()][pieceCourante.getCase(i).getY()+pieceCourante.getPosY()]=pieceCourante.getCase(i).getIdent();
         }
     }
+    
+    public void update() {
+        setChanged();
+        notifyObservers();
+    }
 }

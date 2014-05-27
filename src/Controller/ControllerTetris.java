@@ -38,6 +38,7 @@ public class ControllerTetris implements Runnable, KeyListener {
             }           
             if (!this.descend) {
                 grille.descendrePiece();
+                grille.update();
             }
         }
     }

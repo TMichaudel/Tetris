@@ -121,7 +121,7 @@ public class VueTetris extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        repaint();
+        display();
         
     }
 
