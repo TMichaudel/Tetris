@@ -32,14 +32,15 @@ public class ControllerTetris implements Runnable, KeyListener {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(700);
+                Thread.sleep(500);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ControllerTetris.class.getName()).log(Level.SEVERE, null, ex);
             }           
-            if (!this.descend) {
                 grille.descendrePiece();
                 grille.update();
-            }
+                if (!grille.collisionDepl(0,1)) {
+                    grille.fixerPiece();
+                }
         }
     }
 
@@ -62,7 +63,7 @@ public class ControllerTetris implements Runnable, KeyListener {
                     break;
 
                 case KeyEvent.VK_UP :
-                    //this.grille.rotationPiece();
+                    this.grille.rotationPiece();
                     break;
 
                 case KeyEvent.VK_DOWN :

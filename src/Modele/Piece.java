@@ -231,5 +231,34 @@ public class Piece {
 
     public void rotation() {
         rota = (rota + 1) % 4;
+        switch (Cases[0].getIdent()) {
+            case 1:
+                barre();
+                break;
+
+            case 2:
+                carre();
+                break;
+
+            case 3:
+                T();
+                break;
+
+            case 4:
+                L();
+                break;
+
+            case 5:
+                invL();
+                break;
+
+            case 6:
+                Z();
+                break;
+
+            case 7:
+                invZ();
+                break;
+        }
     }
 }

@@ -46,26 +46,25 @@ public class Grille extends Observable {
     }
 
     public void descendrePiece() {
-        System.out.println(pieceCourante.y);
-       // if (!collisionDepl(0, 1)) {
+        if (collisionDepl(0, 1)) {
             pieceCourante.deplacer(0, 1);
-        //}
+       }
     }
 
     public void tomberPiece() {
-        while (!collisionDepl(0, 1)) {
+        while (collisionDepl(0, 1)) {
             descendrePiece();
         }
     }
 
     public void droitePiece() {
-        if (!collisionDepl(1, 0)) {
+        if (collisionDepl(1, 0)) {
             pieceCourante.deplacer(1, 0);
         }
     }
 
     public void gauchePiece() {
-        if (!collisionDepl(-1, 0)) {
+        if (collisionDepl(-1, 0)) {
             pieceCourante.deplacer(-1, 0);
         }
     }
@@ -115,6 +114,9 @@ public class Grille extends Observable {
 
     }
     
+    public void rotationPiece() {
+        pieceCourante.rotation();
+    }
     public void fixerPiece() {
         int i;
         for(i=0;i<4;i++) {
