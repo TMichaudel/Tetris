@@ -16,9 +16,6 @@ import Vue.*;
  */
 public class Tetris {
 
-    public Tetris() {
-        //    new ControllerTetris.start();
-    }
 
     public static void main(String[] args) {
 
@@ -27,5 +24,6 @@ public class Tetris {
         v.setVisible(true);
         ControllerTetris controller = new ControllerTetris(grille);
         controller.start();
+        v.setKeyListener(controller);
     }
 }

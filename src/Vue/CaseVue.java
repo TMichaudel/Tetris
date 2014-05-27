@@ -13,9 +13,9 @@ import javax.swing.JPanel;
  *
  * @author frederic
  */
-public class Case extends JPanel {
+public class CaseVue extends JPanel {
 
-    public Case(int idCase) {
+    public CaseVue(int idCase) {
         super();
 
         switch (idCase) {
@@ -47,6 +47,10 @@ public class Case extends JPanel {
                 setBackground(Color.white);
                 ;
         }
+    }
+
+    public void setColor(Color color) {
+        setBackground(color);
     }
 
 }

@@ -16,7 +16,7 @@ public class Piece {
     int y;
     
     public Piece(){
-        x=7;
+        x=4;
         y=0;
     }
     
@@ -36,67 +36,53 @@ public class Piece {
         return this.x;
     }
     
-    public Piece barre() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,0,1);
-        p1.Cases[1]=new Case(0,1,1);
-        p1.Cases[2]=new Case(0,2,1);
-        p1.Cases[3]=new Case(0,3,1);
-        return p1;
+    public void barre() {
+        Cases[0]=new Case(0,0,1);
+        Cases[1]=new Case(0,1,1);
+        Cases[2]=new Case(0,2,1);
+        Cases[3]=new Case(0,3,1);
     }
     
-    public Piece carre() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,0,2);
-        p1.Cases[1]=new Case(0,1,2);
-        p1.Cases[2]=new Case(1,0,2);
-        p1.Cases[3]=new Case(1,1,2);
-        return p1;
+    public void carre() {
+        Cases[0]=new Case(0,0,2);
+        Cases[1]=new Case(0,1,2);
+        Cases[2]=new Case(1,0,2);
+        Cases[3]=new Case(1,1,2);
     }
  
-    public Piece T() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,0,3);
-        p1.Cases[1]=new Case(1,0,3);
-        p1.Cases[2]=new Case(2,0,3);
-        p1.Cases[3]=new Case(1,1,3);
-        return p1;        
+    public void T() {
+        Cases[0]=new Case(0,0,3);
+        Cases[1]=new Case(1,0,3);
+        Cases[2]=new Case(2,0,3);
+        Cases[3]=new Case(1,1,3);       
     }
     
-    public Piece L() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,0,4);
-        p1.Cases[1]=new Case(0,1,4);
-        p1.Cases[2]=new Case(0,2,4);
-        p1.Cases[3]=new Case(1,2,4);
-        return p1;        
+    public void L() {
+        Cases[0]=new Case(0,0,4);
+        Cases[1]=new Case(0,1,4);
+        Cases[2]=new Case(0,2,4);
+        Cases[3]=new Case(1,2,4);  
     }
     
-    public Piece invL() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,0,5);
-        p1.Cases[1]=new Case(1,0,5);
-        p1.Cases[2]=new Case(0,1,5);
-        p1.Cases[3]=new Case(0,2,5);
-        return p1;                
+    public void invL() {
+        Cases[0]=new Case(0,0,5);
+        Cases[1]=new Case(1,0,5);
+        Cases[2]=new Case(0,1,5);
+        Cases[3]=new Case(0,2,5);             
     }
     
-    public Piece Z() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,0,6);
-        p1.Cases[1]=new Case(0,1,6);
-        p1.Cases[2]=new Case(1,1,6);
-        p1.Cases[3]=new Case(1,2,6);
-        return p1;               
+    public void Z() {
+        Cases[0]=new Case(0,0,6);
+        Cases[1]=new Case(0,1,6);
+        Cases[2]=new Case(1,1,6);
+        Cases[3]=new Case(1,2,6);             
     }
     
-    public Piece invZ() {
-        Piece p1 = new Piece();
-        p1.Cases[0]=new Case(0,1,7);
-        p1.Cases[1]=new Case(0,2,7);
-        p1.Cases[2]=new Case(1,0,7);
-        p1.Cases[3]=new Case(1,1,7);
-        return p1;                      
+    public void invZ() {
+        Cases[0]=new Case(0,1,7);
+        Cases[1]=new Case(0,2,7);
+        Cases[2]=new Case(1,0,7);
+        Cases[3]=new Case(1,1,7);                   
     }
     
     public void deplacer(int x1,int y1) {
@@ -104,33 +90,32 @@ public class Piece {
         y+=y1;
     }
     
-    public Piece randomPiece() {
+    public void randomPiece() {
        //int nombreAleatoire = Min + (int)(Math.random() * ((Max - Min) + 1));
        int random = 1 + (int)(Math.random() * ((6) + 1));
        Piece p1= new Piece();
        switch(random)
             {
-                case 1 : p1 = barre();
+                case 1 : barre();
                     break;
 
-                case 2 : p1 = carre();
+                case 2 : carre();
                     break;
 
-                case 3 : p1= T();
+                case 3 : T();
                     break;
 
-                case 4 : p1=L();
+                case 4 : L();
                     break;
 
-                case 5 : p1=invL();
+                case 5 : invL();
                     break;
 
-                case 6 : p1=Z();
+                case 6 : Z();
                     break;
                     
-                case 7 : p1=invZ();
+                case 7 : invZ();
                     break;
             }
-       return p1;
     }
 }
