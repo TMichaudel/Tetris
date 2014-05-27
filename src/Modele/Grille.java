@@ -5,8 +5,6 @@
  */
 package Modele;
 
-import java.awt.Color;
-
 /**
  *
  * @author mathieu
@@ -29,16 +27,14 @@ public class Grille {
         //pieceSuivante.randomPiece();
     }
 
-    public int getLargeur()
-    {
+    public int getLargeur() {
         return largeur;
     }
-    
-    public int getHauteur()
-    {
+
+    public int getHauteur() {
         return hauteur;
     }
-    
+
     public final void reinitialiserTableau() {
         for (int i = 0; i < largeur; i++) {
             for (int j = 0; j < hauteur; j++) {
@@ -48,9 +44,9 @@ public class Grille {
     }
 
     public void descendrePiece() {
-        //if(!collision) {
-        pieceCourante.deplacer(0, 1);
-        //}
+        if (!collisionDepl(0, 1)) {
+            pieceCourante.deplacer(0, 1);
+        }
     }
 
     public void tomberPiece() {
@@ -60,11 +56,15 @@ public class Grille {
     }
 
     public void droitePiece() {
-        pieceCourante.deplacer(1, 0);
+        if (!collisionDepl(1, 0)) {
+            pieceCourante.deplacer(1, 0);
+        }
     }
 
     public void gauchePiece() {
-        pieceCourante.deplacer(-1, 0);
+        if (!collisionDepl(-1, 0)) {
+            pieceCourante.deplacer(-1, 0);
+        }
     }
 
     //collisionDepl(0,1) vérifie si la pièce peut descendre par exemple
@@ -84,4 +84,38 @@ public class Grille {
         return true;
     }
 
+    public void supprimerLignes() {
+        int i, j, k;
+        boolean full;
+        for (i = 0; i < hauteur; i++) {
+            
+            full = true;
+            j = 0;
+            while ((full = true) && (j < largeur)) {
+                if (tab[j][i] == 0) {
+                    full = false;
+                }
+                j++;
+            }
+
+            if (full == true) {
+                for (k = i; k > 0; k--) {
+                    for (j = 0; j < largeur; j++) {
+                        tab[j][k] = tab[j][k - 1];
+                    }
+                }
+                for (j = 0; j < largeur; j++) {
+                    tab[j][0] = 0;
+                }
+            }
+        }
+
+    }
+    
+    public void fixerPiece() {
+        int i;
+        for(i=0;i<4;i++) {
+            tab[pieceCourante.getCase(i).getX()+pieceCourante.getPosX()][pieceCourante.getCase(i).getY()+pieceCourante.getPosY()]=pieceCourante.getCase(i).getIdent();
+        }
+    }
 }

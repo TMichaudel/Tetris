@@ -6,7 +6,6 @@ import Controller.ControllerTetris;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
@@ -16,11 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 
 import javax.swing.border.Border;
-import javax.swing.plaf.basic.BasicComboBoxUI.ItemHandler;
 
 /**
  *
@@ -37,7 +34,6 @@ public class VueTetris extends javax.swing.JFrame {
         this.grille = grille;
 
         build();
-
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent arg0) {
