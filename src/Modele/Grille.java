@@ -26,7 +26,8 @@ public class Grille extends Observable {
         this.reinitialiserTableau();
         pieceCourante = new Piece();
         pieceCourante.randomPiece();
-        //pieceSuivante.randomPiece();
+        pieceSuivante= new Piece();
+        pieceSuivante.randomPiece();
     }
 
     public int getLargeur() {
@@ -71,17 +72,22 @@ public class Grille extends Observable {
 
     //collisionDepl(0,1) vérifie si la pièce peut descendre par exemple
     public boolean collisionDepl(int x, int y) {
-        if (tab[pieceCourante.getCase(0).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(0).getY() + pieceCourante.getPosY() + y] != 0) {
-            return false;
-        }
-        if (tab[pieceCourante.getCase(1).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(1).getY() + pieceCourante.getPosY() + y] != 0) {
-            return false;
-        }
-        if (tab[pieceCourante.getCase(2).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(2).getY() + pieceCourante.getPosY() + y] != 0) {
-            return false;
-        }
-        if (tab[pieceCourante.getCase(3).getX() + pieceCourante.getPosX() + x][pieceCourante.getCase(3).getY() + pieceCourante.getPosY() + y] != 0) {
-            return false;
+        int Dx=pieceCourante.x+x;
+        int Dy=pieceCourante.y+y;
+        
+        for(int i=0; i< 4 ; i++) {
+            int test = Dx+pieceCourante.Cases[i].getX();
+            int test2= Dy+pieceCourante.Cases[i].getY();
+            if((test>largeur-1) || (test <0)) {
+                return false;
+            }
+            if(test2>hauteur-1) {
+                return false;
+            }
+            if(tab[test][test2]!=0)
+            {
+                return false;
+            }
         }
         return true;
     }
@@ -122,6 +128,10 @@ public class Grille extends Observable {
         for(i=0;i<4;i++) {
             tab[pieceCourante.getCase(i).getX()+pieceCourante.getPosX()][pieceCourante.getCase(i).getY()+pieceCourante.getPosY()]=pieceCourante.getCase(i).getIdent();
         }
+        //supprimerLignes();
+        pieceCourante=pieceSuivante;
+        pieceSuivante=new Piece();
+        pieceSuivante.randomPiece();
     }
     
     public void update() {
