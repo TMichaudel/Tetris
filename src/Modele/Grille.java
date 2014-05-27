@@ -26,7 +26,7 @@ public class Grille extends Observable {
         this.reinitialiserTableau();
         pieceCourante = new Piece();
         pieceCourante.randomPiece();
-        pieceSuivante= new Piece();
+        pieceSuivante = new Piece();
         pieceSuivante.randomPiece();
     }
 
@@ -49,7 +49,7 @@ public class Grille extends Observable {
     public void descendrePiece() {
         if (collisionDepl(0, 1)) {
             pieceCourante.deplacer(0, 1);
-       }
+        }
     }
 
     public void tomberPiece() {
@@ -72,20 +72,19 @@ public class Grille extends Observable {
 
     //collisionDepl(0,1) vérifie si la pièce peut descendre par exemple
     public boolean collisionDepl(int x, int y) {
-        int Dx=pieceCourante.x+x;
-        int Dy=pieceCourante.y+y;
-        
-        for(int i=0; i< 4 ; i++) {
-            int test = Dx+pieceCourante.Cases[i].getX();
-            int test2= Dy+pieceCourante.Cases[i].getY();
-            if((test>largeur-1) || (test <0)) {
+        int Dx = pieceCourante.x + x;
+        int Dy = pieceCourante.y + y;
+
+        for (int i = 0; i < 4; i++) {
+            int test = Dx + pieceCourante.Cases[i].getX();
+            int test2 = Dy + pieceCourante.Cases[i].getY();
+            if ((test > largeur - 1) || (test < 0)) {
                 return false;
             }
-            if(test2>hauteur-1) {
+            if (test2 > hauteur - 1) {
                 return false;
             }
-            if(tab[test][test2]!=0)
-            {
+            if (tab[test][test2] != 0) {
                 return false;
             }
         }
@@ -96,14 +95,13 @@ public class Grille extends Observable {
         int i, j, k;
         boolean full;
         for (i = 0; i < hauteur; i++) {
-            
+
             full = true;
-            j = 0;
-            while ((full = true) && (j < largeur)) {
-                if (tab[j][i] == 0) {
+
+            for (j = 0; j < largeur; j++) {
+                if (tab[j][i]==0) {
                     full = false;
                 }
-                j++;
             }
 
             if (full == true) {
@@ -119,21 +117,36 @@ public class Grille extends Observable {
         }
 
     }
-    
+
     public void rotationPiece() {
         pieceCourante.rotation();
     }
+
+    public boolean partiePerdue() {
+        if ((tab[5][0]!=0) || (tab[6][0]!=0)) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public void fixerPiece() {
         int i;
-        for(i=0;i<4;i++) {
-            tab[pieceCourante.getCase(i).getX()+pieceCourante.getPosX()][pieceCourante.getCase(i).getY()+pieceCourante.getPosY()]=pieceCourante.getCase(i).getIdent();
+        for (i = 0; i < 4; i++) {
+            tab[pieceCourante.getCase(i).getX() + pieceCourante.getPosX()][pieceCourante.getCase(i).getY() + pieceCourante.getPosY()] = pieceCourante.getCase(i).getIdent();
         }
-        //supprimerLignes();
-        pieceCourante=pieceSuivante;
-        pieceSuivante=new Piece();
+        supprimerLignes();
+        if(partiePerdue()) {
+            System.out.println("Perdu !");
+        }
+        else {            
+        pieceCourante = pieceSuivante;
+        pieceSuivante = new Piece();
         pieceSuivante.randomPiece();
+        }
     }
-    
+
     public void update() {
         setChanged();
         notifyObservers();
