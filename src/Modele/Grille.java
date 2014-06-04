@@ -123,13 +123,7 @@ public class Grille extends Observable {
     }
 
     public boolean partiePerdue() {
-        if ((tab[5][0]!=0) || (tab[6][0]!=0)) {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (tab[5][0]!=0) || (tab[6][0]!=0);
     }
     public void fixerPiece() {
         int i;

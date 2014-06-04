@@ -7,7 +7,6 @@ package tetris;
 
 import Modele.*;
 import Controller.*;
-import javax.swing.*;
 import Vue.*;
 
 /**
@@ -25,5 +24,9 @@ public class Tetris {
         ControllerTetris controller = new ControllerTetris(grille);
         controller.start();
         v.setKeyListener(controller);
+        
+        Jeu Tetris = new Jeu(grille);
+        Tetris.start();
+
     }
 }

@@ -5,7 +5,6 @@
  */
 package Vue;
 import Modele.Grille;
-import Modele.Piece;
 /**
  *
  * @author michaudel
