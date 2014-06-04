@@ -1,7 +1,7 @@
 package Vue;
 
 import Modele.*;
-import Controller.ControllerTetris;
+import Controller.Controleur;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -24,13 +24,13 @@ import javax.swing.border.Border;
  *
  * @author frederic
  */
-public class VueTetris extends javax.swing.JFrame implements Observer {
+public class Vue extends javax.swing.JFrame implements Observer {
 
     Grille grille;
-    ControllerTetris controller;
+    Controleur controller;
     JComponent pan;
 
-    public VueTetris(Grille grille) {
+    public Vue(Grille grille) {
         super();
         this.grille = grille;
         grille.addObserver(this);
@@ -113,7 +113,7 @@ public class VueTetris extends javax.swing.JFrame implements Observer {
         }
     }
 
-    public void setKeyListener(ControllerTetris controller) {
+    public void setKeyListener(Controleur controller) {
         this.controller = controller;
         this.addKeyListener(this.controller);
     }

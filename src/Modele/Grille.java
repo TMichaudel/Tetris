@@ -99,7 +99,7 @@ public class Grille extends Observable {
             full = true;
 
             for (j = 0; j < largeur; j++) {
-                if (tab[j][i]==0) {
+                if (tab[j][i] == 0) {
                     full = false;
                 }
             }
@@ -123,21 +123,20 @@ public class Grille extends Observable {
     }
 
     public boolean partiePerdue() {
-        return (tab[5][0]!=0) || (tab[6][0]!=0);
+        return (tab[5][0] != 0) || (tab[6][0] != 0);
     }
+
     public void fixerPiece() {
         int i;
         for (i = 0; i < 4; i++) {
             tab[pieceCourante.getCase(i).getX() + pieceCourante.getPosX()][pieceCourante.getCase(i).getY() + pieceCourante.getPosY()] = pieceCourante.getCase(i).getIdent();
         }
         supprimerLignes();
-        if(partiePerdue()) {
-            System.out.println("Perdu !");
-        }
-        else {            
-        pieceCourante = pieceSuivante;
-        pieceSuivante = new Piece();
-        pieceSuivante.randomPiece();
+        if (partiePerdue()) {
+        } else {
+            pieceCourante = pieceSuivante;
+            pieceSuivante = new Piece();
+            pieceSuivante.randomPiece();
         }
     }
 

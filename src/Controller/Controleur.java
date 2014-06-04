@@ -13,19 +13,19 @@ import java.awt.event.KeyListener;
  *
  * @author michaudel
  */
-public class ControllerTetris implements Runnable, KeyListener {
+public class Controleur implements Runnable, KeyListener {
 
     private Thread t;
 
     private final Grille grille;
 
-    public ControllerTetris(Grille grille) {
+    public Controleur(Grille grille) {
         this.grille = grille;
     }
 
     @Override
     public void run() {
- 
+
     }
 
     public void start() {

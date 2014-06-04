@@ -24,7 +24,8 @@ public class Jeu implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
+        boolean running = true;
+        while (running) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ex) {
@@ -34,6 +35,10 @@ public class Jeu implements Runnable {
             grille.update();
             if (!grille.collisionDepl(0, 1)) {
                 grille.fixerPiece();
+                if (grille.partiePerdue()) {
+                    running = false;
+                    System.out.println("Perdu !!");
+                }
             }
         }
     }

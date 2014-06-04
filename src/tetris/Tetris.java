@@ -15,16 +15,15 @@ import Vue.*;
  */
 public class Tetris {
 
-
     public static void main(String[] args) {
 
         Grille grille = new Grille(10, 20);
-        VueTetris v = new VueTetris(grille);
+        Vue v = new Vue(grille);
         v.setVisible(true);
-        ControllerTetris controller = new ControllerTetris(grille);
+        Controleur controller = new Controleur(grille);
         controller.start();
         v.setKeyListener(controller);
-        
+
         Jeu Tetris = new Jeu(grille);
         Tetris.start();
 
